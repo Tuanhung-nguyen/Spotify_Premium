@@ -154,7 +154,7 @@ dim_artists_df = all_artists_exploded.groupBy(
     F.col("artist.external_urls.spotify").alias("spotify_url")
 ).agg(
     F.first("album_image_url", ignorenulls=True).alias("sample_image_url")
-).filter("artist_id IS NOT NULL AND artist_name IS NOT NULL")
+).filter("artist_id IS NOT NULL AND artist_name IS NOT NULL").dropDuplicates(["artist_id"])
 
 # Bảng BRIDGE_TRACK_ARTISTS (Cầu nối quan hệ Nhiều - Nhiều)
 bridge_track_artists_df = all_artists_exploded.select(
