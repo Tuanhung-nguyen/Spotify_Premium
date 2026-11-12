@@ -1,0 +1,15 @@
+name: Test AI HITL Remediation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  spotify_ingestion_task:
+    name: "Spotify Ingestion Task"
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Simulate Ingestion Step
+        run: |
+          echo "Simulating Spotify Data Ingestion..."
+          echo "Attempting to connect to Spotify Web API..."
+          python -c "raise TimeoutError('Connection reset by peer while fetching Spotify API. Transient network timeout.')"
